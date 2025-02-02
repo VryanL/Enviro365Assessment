@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class RecyclingTip {
@@ -13,8 +14,11 @@ public class RecyclingTip {
     private Long id;
 
     @NotBlank(message = "Tip name is required")
+    @Size(min = 2, max = 50, message = "Tip name must be between 2 and 50 characters")
     private String name;
 
+    @NotBlank(message = "Tip description is required")
+    @Size(min = 2, max = 255, message = "Tip description must be between 2 and 255 characters")
     private String description;
 
     public RecyclingTip() {

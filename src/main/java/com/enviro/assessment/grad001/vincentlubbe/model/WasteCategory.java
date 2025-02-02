@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -15,8 +16,11 @@ public class WasteCategory {
     private Long id;
 
     @NotBlank(message = "Category name is required")
+    @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
     private String name;
 
+    @NotBlank(message = "Category description is required")
+    @Size(min = 2, max = 255, message = "Category description must be between 2 and 255 characters")
     private String description;
 
     public WasteCategory() {
