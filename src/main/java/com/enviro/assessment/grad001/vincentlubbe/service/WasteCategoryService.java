@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -34,9 +35,25 @@ public class WasteCategoryService {
     public WasteCategory updateCategory(Long id, WasteCategory category) {
         WasteCategory existingCategory = getCategoryById(id);
         existingCategory.setName(category.getName());
-        existingCategory.setDescription(category.getDescription());
+        existingCategory.setCategory(category.getCategory());
         return repository.save(existingCategory);
 
+    }
+
+    public WasteCategory patchCategory(Long id, Map<String, Object> category) {
+        WasteCategory existingCategory = getCategoryById(id);
+
+        category.forEach((key, value) -> {
+            switch (key) {
+                case "name":
+                    existingCategory.setName((String) value);
+                    break;
+                case "category":
+                    existingCategory.setCategory((String) value);
+                    break;
+            }
+        });
+        return repository.save(existingCategory);
     }
 
     public void deleteCategory(Long id) {

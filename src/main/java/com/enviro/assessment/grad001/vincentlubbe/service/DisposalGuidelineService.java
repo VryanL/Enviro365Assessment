@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.vincentlubbe.service;
 
+
 import com.enviro.assessment.grad001.vincentlubbe.exception.ResourceNotFoundException;
 import com.enviro.assessment.grad001.vincentlubbe.model.DisposalGuideline;
 import com.enviro.assessment.grad001.vincentlubbe.repository.DisposalGuidelineRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 //Marks this class as a service, separating business logic from controllers
 @Service
@@ -23,7 +25,8 @@ public class DisposalGuidelineService {
     }
 
     public DisposalGuideline getGuidelineById(Long id) {
-        return repository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No Guideline found with id: " + id));
+        return repository.findById(id).orElseThrow(
+                ()-> new ResourceNotFoundException("No Guideline found with id: " + id));
     }
 
     public DisposalGuideline saveGuideline(DisposalGuideline Guideline) {
@@ -33,7 +36,23 @@ public class DisposalGuidelineService {
     public DisposalGuideline updateGuideline(Long id, DisposalGuideline Guideline) {
         DisposalGuideline existingGuideline = getGuidelineById(id);
         existingGuideline.setName(Guideline.getName());
-        existingGuideline.setDescription(Guideline.getDescription());
+        existingGuideline.setGuideline(Guideline.getGuideline());
+        return repository.save(existingGuideline);
+    }
+
+    public DisposalGuideline patchGuideline(Long id, Map<String, Object> guideline) {
+        DisposalGuideline existingGuideline = getGuidelineById(id);
+
+        guideline.forEach((key, value) -> {
+            switch (key) {
+                case "name":
+                    existingGuideline.setName(value.toString());
+                    break;
+                case "guideline":
+                    existingGuideline.setGuideline(value.toString());
+                    break;
+            }
+        });
         return repository.save(existingGuideline);
     }
 

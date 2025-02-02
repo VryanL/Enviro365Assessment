@@ -35,27 +35,15 @@ public class WasteCategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id, @Valid @RequestBody WasteCategory wasteCategory) {
+    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id,
+                                                        @Valid @RequestBody WasteCategory wasteCategory) {
         return ResponseEntity.ok(service.updateCategory(id, wasteCategory));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<WasteCategory> patchCategory(@PathVariable Long id, @Valid @RequestBody Map<String, Object> wasteCategory) {
-        WasteCategory existingCategory = service.getCategoryById(id);
-
-        wasteCategory.forEach((key, value) -> {
-            switch (key) {
-                case "name":
-                    existingCategory.setName((String) value);
-                    break;
-                case "description":
-                    existingCategory.setDescription((String) value);
-                    break;
-            }
-
-        });
-
-        return ResponseEntity.ok(service.updateCategory(id, existingCategory));
+    public ResponseEntity<WasteCategory> patchCategory(@PathVariable Long id,
+                                                       @Valid @RequestBody Map<String, Object> wasteCategory) {
+        return ResponseEntity.ok(service.patchCategory(id, wasteCategory));
     }
 
     @DeleteMapping("/{id}")

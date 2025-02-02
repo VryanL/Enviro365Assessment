@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 public class RecyclingTip {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,22 +18,22 @@ public class RecyclingTip {
     @Size(min = 2, max = 50, message = "Tip name must be between 2 and 50 characters")
     private String name;
 
-    @NotBlank(message = "Tip description is required")
-    @Size(min = 2, max = 255, message = "Tip description must be between 2 and 255 characters")
-    private String description;
+    @NotBlank(message = "Recycling tip is required")
+    @Size(min = 2, max = 255, message = "Tip must be between 2 and 255 characters")
+    private String tip;
 
     public RecyclingTip() {
     }
 
-    public RecyclingTip(String description, String name, Long id) {
-        this.description = description;
-        this.name = name;
+    public RecyclingTip(Long id, String name, String tip)  {
         this.id = id;
+        this.name = name;
+        this.tip = tip;
     }
 
-    public RecyclingTip(String name, String description) {
+    public RecyclingTip(String name, String tip) {
         this.name = name;
-        this.description = description;
+        this.tip = tip;
     }
 
     public Long getId() {
@@ -51,12 +52,12 @@ public class RecyclingTip {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTip() {
+        return tip;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTip(String tip) {
+        this.tip = tip;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class RecyclingTip {
         return "RecyclingTip{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", tip='" + tip + '\'' +
                 '}';
     }
 }

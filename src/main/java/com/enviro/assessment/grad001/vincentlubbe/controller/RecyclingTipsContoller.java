@@ -35,26 +35,16 @@ public class RecyclingTipsContoller {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RecyclingTip> updateRecyclingTip(@PathVariable Long id, @Valid @RequestBody RecyclingTip recyclingTip) {
+    public ResponseEntity<RecyclingTip> updateRecyclingTip(@PathVariable Long id,
+                                                           @Valid @RequestBody RecyclingTip recyclingTip) {
         return ResponseEntity.ok(service.updateTip(id, recyclingTip));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<RecyclingTip> patchRecyclingTip(@PathVariable Long id, @RequestBody Map<String, Objects> recyclingTip) {
-        RecyclingTip existingRecyclingTip = service.getRecyclingTipById(id);
+    public ResponseEntity<RecyclingTip> patchRecyclingTip(@PathVariable Long id,
+                                                          @RequestBody Map<String, Object> recyclingTip) {;
 
-        recyclingTip.forEach((key, value) -> {
-            switch (key) {
-                case "name":
-                    existingRecyclingTip.setName(value.toString());
-                    break;
-                case "description":
-                    existingRecyclingTip.setDescription(value.toString());
-                    break;
-            }
-        });
-
-        return ResponseEntity.ok(service.updateTip(id, existingRecyclingTip));
+        return ResponseEntity.ok(service.patchTip(id, recyclingTip));
     }
 
     @DeleteMapping("/{id}")

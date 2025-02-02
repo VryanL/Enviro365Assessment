@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class RecyclingTipService {
@@ -32,7 +33,23 @@ public class RecyclingTipService {
     public RecyclingTip updateTip(Long id, RecyclingTip recyclingTip) {
         RecyclingTip existingRecyclingTip = getRecyclingTipById(id);
         existingRecyclingTip.setName(recyclingTip.getName());
-        existingRecyclingTip.setDescription(recyclingTip.getDescription());
+        existingRecyclingTip.setTip(recyclingTip.getTip());
+        return repository.save(existingRecyclingTip);
+    }
+
+    public RecyclingTip patchTip(Long id, Map<String, Object> patch) {
+        RecyclingTip existingRecyclingTip = getRecyclingTipById(id);
+
+        patch.forEach((key, value) -> {
+            switch (key) {
+                case "name":
+                    existingRecyclingTip.setName(value.toString());
+                    break;
+                case "tip":
+                    existingRecyclingTip.setTip(value.toString());
+                    break;
+            }
+        });
         return repository.save(existingRecyclingTip);
     }
 

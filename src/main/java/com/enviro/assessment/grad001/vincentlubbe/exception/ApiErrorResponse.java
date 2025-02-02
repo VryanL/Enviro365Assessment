@@ -3,6 +3,7 @@ package com.enviro.assessment.grad001.vincentlubbe.exception;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//Error object to add more error details
 public class ApiErrorResponse {
     private final LocalDateTime timestamp;
     private final int status;

@@ -29,31 +29,21 @@ public class DisposalGuidelineController {
     }
 
     @PostMapping
-    public ResponseEntity<DisposalGuideline> createDisposalGuideline(@Valid @RequestBody DisposalGuideline disposalGuideline) {
+    public ResponseEntity<DisposalGuideline> createDisposalGuideline(@Valid @RequestBody
+                                                                         DisposalGuideline disposalGuideline) {
         return ResponseEntity.ok(service.saveGuideline(disposalGuideline));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DisposalGuideline> updateGuideline(@PathVariable Long id, @Valid @RequestBody DisposalGuideline disposalGuideline) {
+    public ResponseEntity<DisposalGuideline> updateGuideline(@PathVariable Long id,
+                                                             @Valid @RequestBody DisposalGuideline disposalGuideline) {
         return ResponseEntity.ok(service.updateGuideline(id, disposalGuideline));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<DisposalGuideline> patchGuideline(@PathVariable Long id, @RequestBody Map<String, Object> disposalGuideline) {
-        DisposalGuideline existingGuideline = service.getGuidelineById(id);
-
-        disposalGuideline.forEach((key, value) -> {
-            switch (key) {
-                case "name":
-                    existingGuideline.setName(value.toString());
-                    break;
-                case "description":
-                    existingGuideline.setDescription(value.toString());
-                    break;
-            }
-        });
-
-        return ResponseEntity.ok(service.saveGuideline(existingGuideline));
+    public ResponseEntity<DisposalGuideline> patchGuideline(@PathVariable Long id,
+                                                            @RequestBody Map<String, Object> disposalGuideline) {
+        return ResponseEntity.ok(service.patchGuideline(id, disposalGuideline));
     }
 
     @DeleteMapping("/{id}")
