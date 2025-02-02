@@ -33,7 +33,7 @@ public class RecyclingTipService {
     public RecyclingTip updateTip(Long id, RecyclingTip recyclingTip) {
         RecyclingTip existingRecyclingTip = getRecyclingTipById(id);
         existingRecyclingTip.setName(recyclingTip.getName());
-        existingRecyclingTip.setTip(recyclingTip.getTip());
+        existingRecyclingTip.setDescription(recyclingTip.getDescription());
         return repository.save(existingRecyclingTip);
     }
 
@@ -45,8 +45,8 @@ public class RecyclingTipService {
                 case "name":
                     existingRecyclingTip.setName(value.toString());
                     break;
-                case "tip":
-                    existingRecyclingTip.setTip(value.toString());
+                case "description":
+                    existingRecyclingTip.setDescription(value.toString());
                     break;
             }
         });

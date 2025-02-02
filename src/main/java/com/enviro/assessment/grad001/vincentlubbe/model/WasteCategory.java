@@ -19,22 +19,22 @@ public class WasteCategory {
     @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
     private String name;
 
-    @NotBlank(message = "Waste category is required")
-    @Size(min = 2, max = 255, message = "Waste category must be between 2 and 255 characters")
-    private String category;
+    @NotBlank(message = "Description is required")
+    @Size(min = 2, max = 255, message = "Description must be between 2 and 255 characters")
+    private String description;
 
     public WasteCategory() {
     }
 
-    public WasteCategory(String name, String category) {
+    public WasteCategory(String name, String description) {
         this.name = name;
-        this.category = category;
+        this.description = description;
     }
 
-    public WasteCategory(Long id, String name, String category) {
+    public WasteCategory(Long id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.category = category;
+        this.description = description;
     }
 
     public Long getId() {
@@ -53,12 +53,12 @@ public class WasteCategory {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class WasteCategory {
         return "WasteCategory{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

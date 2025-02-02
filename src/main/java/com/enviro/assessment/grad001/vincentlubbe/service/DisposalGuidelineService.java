@@ -36,7 +36,7 @@ public class DisposalGuidelineService {
     public DisposalGuideline updateGuideline(Long id, DisposalGuideline Guideline) {
         DisposalGuideline existingGuideline = getGuidelineById(id);
         existingGuideline.setName(Guideline.getName());
-        existingGuideline.setGuideline(Guideline.getGuideline());
+        existingGuideline.setDescription(Guideline.getDescription());
         return repository.save(existingGuideline);
     }
 
@@ -48,8 +48,8 @@ public class DisposalGuidelineService {
                 case "name":
                     existingGuideline.setName(value.toString());
                     break;
-                case "guideline":
-                    existingGuideline.setGuideline(value.toString());
+                case "description":
+                    existingGuideline.setDescription(value.toString());
                     break;
             }
         });

@@ -18,22 +18,22 @@ public class RecyclingTip {
     @Size(min = 2, max = 50, message = "Tip name must be between 2 and 50 characters")
     private String name;
 
-    @NotBlank(message = "Recycling tip is required")
-    @Size(min = 2, max = 255, message = "Tip must be between 2 and 255 characters")
-    private String tip;
+    @NotBlank(message = "Description is required")
+    @Size(min = 2, max = 255, message = "Description must be between 2 and 255 characters")
+    private String description;
 
     public RecyclingTip() {
     }
 
-    public RecyclingTip(Long id, String name, String tip)  {
+    public RecyclingTip(Long id, String name, String description)  {
         this.id = id;
         this.name = name;
-        this.tip = tip;
+        this.description = description;
     }
 
-    public RecyclingTip(String name, String tip) {
+    public RecyclingTip(String name, String description) {
         this.name = name;
-        this.tip = tip;
+        this.description = description;
     }
 
     public Long getId() {
@@ -52,12 +52,12 @@ public class RecyclingTip {
         this.name = name;
     }
 
-    public String getTip() {
-        return tip;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTip(String tip) {
-        this.tip = tip;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class RecyclingTip {
         return "RecyclingTip{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", tip='" + tip + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

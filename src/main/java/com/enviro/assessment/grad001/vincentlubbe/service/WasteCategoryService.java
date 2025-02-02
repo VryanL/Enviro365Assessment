@@ -35,7 +35,7 @@ public class WasteCategoryService {
     public WasteCategory updateCategory(Long id, WasteCategory category) {
         WasteCategory existingCategory = getCategoryById(id);
         existingCategory.setName(category.getName());
-        existingCategory.setCategory(category.getCategory());
+        existingCategory.setDescription(category.getDescription());
         return repository.save(existingCategory);
 
     }
@@ -48,8 +48,8 @@ public class WasteCategoryService {
                 case "name":
                     existingCategory.setName((String) value);
                     break;
-                case "category":
-                    existingCategory.setCategory((String) value);
+                case "description":
+                    existingCategory.setDescription((String) value);
                     break;
             }
         });

@@ -20,20 +20,20 @@ public class DisposalGuideline {
 
     @NotBlank(message = "Disposal guideline is required")
     @Size(min = 2, max = 255, message = "Disposal guideline must be between 2 and 255 characters")
-    private String guideline;
+    private String description;
 
     public DisposalGuideline() {
     }
 
-    public DisposalGuideline(Long id, String name, String guideline) {
+    public DisposalGuideline(Long id, String name, String description) {
         this.id = id;
         this.name = name;
-        this.guideline = guideline;
+        this.description = description;
     }
 
-    public DisposalGuideline(String name, String guideline) {
+    public DisposalGuideline(String name, String description) {
         this.name = name;
-        this.guideline = guideline;
+        this.description = description;
     }
 
     public Long getId() {
@@ -52,12 +52,12 @@ public class DisposalGuideline {
         this.name = name;
     }
 
-    public String getGuideline() {
-        return guideline;
+    public String getDescription() {
+        return description;
     }
 
-    public void setGuideline(String guideline) {
-        this.guideline = guideline;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class DisposalGuideline {
         return "DisposalGuideline{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", guideline='" + guideline + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
