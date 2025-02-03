@@ -23,6 +23,20 @@ public class WasteCategory extends WasteInfo {
         this.category = category;
     }
 
+    public WasteCategory(String category) {
+        this.category = category;
+    }
+
+    public WasteCategory(Long id, String name, String description, String category) {
+        super(id, name, description);
+        this.category = category;
+    }
+
+    public WasteCategory(String name, String description, String category) {
+        super(name, description);
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "WasteCategory{" +

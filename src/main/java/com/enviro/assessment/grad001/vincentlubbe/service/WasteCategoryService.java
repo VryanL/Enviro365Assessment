@@ -2,7 +2,6 @@ package com.enviro.assessment.grad001.vincentlubbe.service;
 
 import com.enviro.assessment.grad001.vincentlubbe.model.WasteCategory;
 import com.enviro.assessment.grad001.vincentlubbe.repository.WasteCategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -11,7 +10,6 @@ import java.util.Map;
 @Service
 public class WasteCategoryService extends BaseService<WasteCategory, Long> {
 
-    @Autowired
     public WasteCategoryService(WasteCategoryRepository wasteCategoryRepository) {
         super(wasteCategoryRepository);
     }

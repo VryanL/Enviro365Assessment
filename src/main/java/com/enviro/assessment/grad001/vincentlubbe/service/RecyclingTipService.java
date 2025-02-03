@@ -2,7 +2,6 @@ package com.enviro.assessment.grad001.vincentlubbe.service;
 
 import com.enviro.assessment.grad001.vincentlubbe.model.RecyclingTip;
 import com.enviro.assessment.grad001.vincentlubbe.repository.RecyclingTipRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -10,7 +9,6 @@ import java.util.Map;
 @Service
 public class RecyclingTipService extends BaseService<RecyclingTip, Long> {
 
-    @Autowired
     public RecyclingTipService(RecyclingTipRepository recyclingTipRepository) {
         super(recyclingTipRepository);
     }

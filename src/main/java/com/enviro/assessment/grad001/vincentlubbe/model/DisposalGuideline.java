@@ -23,6 +23,20 @@ public class DisposalGuideline extends WasteInfo{
 
     }
 
+    public DisposalGuideline(String guideline) {
+        this.guideline = guideline;
+    }
+
+    public DisposalGuideline(Long id, String name, String description, String guideline) {
+        super(id, name, description);
+        this.guideline = guideline;
+    }
+
+    public DisposalGuideline(String name, String description, String guideline) {
+        super(name, description);
+        this.guideline = guideline;
+    }
+
     @Override
     public String toString() {
         return "DisposalGuideline{" +

@@ -23,6 +23,20 @@ public class RecyclingTip extends WasteInfo{
         this.tip = tip;
     }
 
+    public RecyclingTip(String tip) {
+        this.tip = tip;
+    }
+
+    public RecyclingTip(Long id, String name, String description, String tip) {
+        super(id, name, description);
+        this.tip = tip;
+    }
+
+    public RecyclingTip(String name, String description, String tip) {
+        super(name, description);
+        this.tip = tip;
+    }
+
     @Override
     public String toString() {
         return "RecyclingTip{" +

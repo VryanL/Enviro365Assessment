@@ -3,7 +3,6 @@ package com.enviro.assessment.grad001.vincentlubbe.service;
 
 import com.enviro.assessment.grad001.vincentlubbe.model.DisposalGuideline;
 import com.enviro.assessment.grad001.vincentlubbe.repository.DisposalGuidelineRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -12,7 +11,6 @@ import java.util.Map;
 @Service
 public class DisposalGuidelineService extends BaseService<DisposalGuideline, Long> {
 
-    @Autowired
     public DisposalGuidelineService(DisposalGuidelineRepository disposalGuidelineRepository) {
         super(disposalGuidelineRepository);
     }

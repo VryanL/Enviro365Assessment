@@ -5,7 +5,6 @@ import com.enviro.assessment.grad001.vincentlubbe.service.WasteCategoryService;
 import org.springframework.web.bind.annotation.*;
 
 
-//Defines a RESTful controller that handles HTTP requests.
 @RestController
 @RequestMapping("/api/waste-categories")
 public class WasteCategoryController extends BaseController<WasteCategory, Long> {
