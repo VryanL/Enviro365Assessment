@@ -1,7 +1,5 @@
-package com.enviro.assessment.grad001.vincentlubbe.controller;
+package com.enviro.assessment.grad001.vincentlubbe.exception;
 
-import com.enviro.assessment.grad001.vincentlubbe.exception.ApiErrorResponse;
-import com.enviro.assessment.grad001.vincentlubbe.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
