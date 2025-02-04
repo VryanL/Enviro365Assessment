@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Map;
 
-//Abstract class for service for generic function calls
+//Abstract class for service for common function calls
+//update, patch, getByName and getByNameContaining are abstract
 public abstract class BaseWasteService<T extends BaseWaste, ID> {
 
     protected final JpaRepository<T, ID> repository;
@@ -24,7 +25,6 @@ public abstract class BaseWasteService<T extends BaseWaste, ID> {
         return repository.findById(id).orElseThrow(
                  () -> new ResourceNotFoundException("No record found with id: " + id));
     }
-
 
     public T save(T entity) {
         return repository.save(entity);

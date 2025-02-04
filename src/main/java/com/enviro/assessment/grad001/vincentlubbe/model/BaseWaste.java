@@ -8,6 +8,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 //Abstract class for models that share the same information
+//All waste related objects will have an id that is generated and
+//a description that may or may not be filled
 @MappedSuperclass
 public abstract class BaseWaste {
     @Id

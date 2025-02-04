@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+//Base controller for waste object
+//"/api/{entity}" calls for Create and Read
+//"/api/{entity}/{id}" calls for Read, Update, delete
+//"/api/{entity}/name/{name} calls for Read Distinct name
+//"/api/{entity}/name-contain/{name} calls for Read name that contains {name}
 public abstract class BaseWasteController<T extends BaseWaste, ID> {
 
     private final BaseWasteService<T, ID> service;
