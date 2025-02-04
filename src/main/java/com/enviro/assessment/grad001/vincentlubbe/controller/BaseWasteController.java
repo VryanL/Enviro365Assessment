@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.vincentlubbe.controller;
 
+import com.enviro.assessment.grad001.vincentlubbe.model.BaseWaste;
 import com.enviro.assessment.grad001.vincentlubbe.service.BaseWasteService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseWasteController<T, ID> {
+public abstract class BaseWasteController<T extends BaseWaste, ID> {
 
     private final BaseWasteService<T, ID> service;
 

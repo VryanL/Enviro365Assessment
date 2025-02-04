@@ -1,13 +1,14 @@
 package com.enviro.assessment.grad001.vincentlubbe.service;
 
 import com.enviro.assessment.grad001.vincentlubbe.exception.ResourceNotFoundException;
+import com.enviro.assessment.grad001.vincentlubbe.model.BaseWaste;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Map;
 
 //Abstract class for service for generic function calls
-public abstract class BaseWasteService<T, ID> {
+public abstract class BaseWasteService<T extends BaseWaste, ID> {
 
     protected final JpaRepository<T, ID> repository;
 
