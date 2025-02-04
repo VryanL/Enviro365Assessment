@@ -1,17 +1,21 @@
 package com.enviro.assessment.grad001.vincentlubbe.service;
 
+import com.enviro.assessment.grad001.vincentlubbe.exception.ResourceNotFoundException;
 import com.enviro.assessment.grad001.vincentlubbe.model.WasteCategory;
 import com.enviro.assessment.grad001.vincentlubbe.repository.WasteCategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 
 @Service
-public class WasteCategoryService extends BaseService<WasteCategory, Long> {
+public class WasteCategoryService extends BaseWasteService<WasteCategory, Long> {
+    private final WasteCategoryRepository wasteRepository;
 
     public WasteCategoryService(WasteCategoryRepository wasteCategoryRepository) {
         super(wasteCategoryRepository);
+        this.wasteRepository = wasteCategoryRepository;
     }
 
     @Override
@@ -41,5 +45,16 @@ public class WasteCategoryService extends BaseService<WasteCategory, Long> {
             }
         });
         return save(existingWasteCategory);
+    }
+
+    @Override
+    public WasteCategory getByName(String name) {
+        return wasteRepository.findByName(name).orElseThrow(
+                ()-> new ResourceNotFoundException("No Waste Category found with name: " + name));
+    }
+
+    @Override
+    public List<WasteCategory> getByNameContaining(String name) {
+        return wasteRepository.findByNameContaining(name);
     }
 }

@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 //Abstract class for service for generic function calls
-public abstract class BaseService<T, ID> {
+public abstract class BaseWasteService<T, ID> {
 
-    private final JpaRepository<T, ID> repository;
+    protected final JpaRepository<T, ID> repository;
 
-    protected BaseService(JpaRepository<T, ID> repository) {
+    protected BaseWasteService(JpaRepository<T, ID> repository) {
         this.repository = repository;
     }
 
@@ -20,14 +20,14 @@ public abstract class BaseService<T, ID> {
     }
 
     public T getById(ID id) {
-         return repository.findById(id).orElseThrow(
+        return repository.findById(id).orElseThrow(
                  () -> new ResourceNotFoundException("No record found with id: " + id));
     }
+
 
     public T save(T entity) {
         return repository.save(entity);
     }
-
 
     public void delete(ID id) {
         if (repository.existsById(id)) {
@@ -41,4 +41,8 @@ public abstract class BaseService<T, ID> {
     public abstract T update(ID id, T entity);
 
     public abstract T patch(ID id, Map<String, Object> theMap);
+
+    public abstract T getByName(String name);
+
+    public abstract List<T> getByNameContaining(String name);
 }

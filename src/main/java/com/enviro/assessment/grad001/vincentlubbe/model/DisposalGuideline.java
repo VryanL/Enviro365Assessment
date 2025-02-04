@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-public class DisposalGuideline extends WasteInfo{
+public class DisposalGuideline extends BaseWaste {
 
     @NotBlank(message = "Guideline is required")
     @Size(min = 2, max = 255, message = "Guideline must be between 2 and 255 charters")

@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 
 //Abstract class for models that share the same information
 @MappedSuperclass
-public abstract class WasteInfo {
+public abstract class BaseWaste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,16 +21,16 @@ public abstract class WasteInfo {
     @Size(max = 255, message = "Description must be less than 255 charters")
     private String description;
 
-    public WasteInfo() {
+    public BaseWaste() {
     }
 
-    public WasteInfo(Long id, String name, String description) {
+    public BaseWaste(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public WasteInfo(String name, String description) {
+    public BaseWaste(String name, String description) {
         this.name = name;
         this.description = description;
     }

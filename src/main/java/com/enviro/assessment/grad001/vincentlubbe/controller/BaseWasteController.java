@@ -1,6 +1,6 @@
 package com.enviro.assessment.grad001.vincentlubbe.controller;
 
-import com.enviro.assessment.grad001.vincentlubbe.service.BaseService;
+import com.enviro.assessment.grad001.vincentlubbe.service.BaseWasteService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseController<T, ID> {
+public abstract class BaseWasteController<T, ID> {
 
-    private final BaseService<T, ID> service;
+    private final BaseWasteService<T, ID> service;
 
-    protected BaseController(BaseService<T, ID> service) {
+    protected BaseWasteController(BaseWasteService<T, ID> service) {
         this.service = service;
     }
 
@@ -24,6 +24,16 @@ public abstract class BaseController<T, ID> {
     @GetMapping("/{id}")
     public ResponseEntity<T> getById(@PathVariable ID id) {
         return ResponseEntity.ok(service.getById(id));
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<T> getByName(@PathVariable String name) {
+        return ResponseEntity.ok(service.getByName(name));
+    }
+
+    @GetMapping("/name-containing/{name}")
+    public ResponseEntity<List<T>> getByNameContaining(@PathVariable String name) {
+        return ResponseEntity.ok(service.getByNameContaining(name));
     }
 
     @PostMapping
